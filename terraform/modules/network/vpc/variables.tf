@@ -9,11 +9,7 @@ variable "cidr_block" {
 }
 
 variable "tags" {
-  description = "공통 태그"
-  type = object({
-    Environment = string
-    Project     = string
-    Owner       = string
-    ManagedBy   = string
-  })
+  description = "공통으로 적용할 태그 맵 (예: Environment, Project 등)"
+  type        = map(string)
+  default     = {}
 }
