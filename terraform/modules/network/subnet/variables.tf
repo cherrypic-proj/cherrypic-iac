@@ -29,3 +29,7 @@ variable "type" {
   type        = string
 }
 
+variable "index" {
+  description = "서브넷 번호 (1부터 시작)"
+  type        = number
+}
