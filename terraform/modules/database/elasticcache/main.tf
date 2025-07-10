@@ -1,27 +1,24 @@
-resource "aws_security_group" "main" {
-  name        = "${var.app}-${var.environment}-elasticache-sg"
-  description = "Security group for ElastiCache"
-  vpc_id      = var.vpc_id
+resource "aws_elasticache_subnet_group" "main" {
+  name       = var.subnet_group_name
+  subnet_ids = var.subnet_ids
+  description = var.subnet_group_description
+}
 
-  ingress {
-    description = "Redis port"
-    from_port   = var.port
-    to_port     = var.port
-    protocol    = "tcp"
-    cidr_blocks = var.allowed_cidr_blocks
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+resource "aws_elasticache_cluster" "main" {
+  cluster_id           = "${var.app}-${var.environment}-${var.engine}"
+  engine               = var.engine
+  engine_version       = var.engine_version
+  node_type            = var.node_type
+  num_cache_nodes      = var.num_cache_nodes
+  parameter_group_name = var.parameter_group_name
+  port                 = var.port
+  subnet_group_name    = aws_elasticache_subnet_group.main.name
+  security_group_ids   = var.security_group_ids
 
   tags = merge(
     var.tags,
     {
-      Name = "${var.app}-${var.environment}-elasticache-sg"
+      Name = "${var.app}-${var.environment}-${var.engine}"
     }
   )
 }
