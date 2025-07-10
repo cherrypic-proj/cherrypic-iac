@@ -1,4 +1,4 @@
-resource "aws_db_subnet_group" "this" {
+resource "aws_db_subnet_group" "main" {
   name        = "${var.app}-${var.environment}-db-subnet-group"
   subnet_ids  = var.subnet_ids
   description = var.description
