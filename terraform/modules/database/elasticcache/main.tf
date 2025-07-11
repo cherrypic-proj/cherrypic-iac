@@ -1,12 +1,12 @@
 resource "aws_elasticache_subnet_group" "main" {
-  name        = "${var.app_name}-es-subnet-group"
+  name        = "${var.app_name}-${var.engine}-es-subnet-group"
   subnet_ids  = var.subnet_ids
   description = var.subnet_group_description
 }
 
 resource "aws_elasticache_cluster" "main" {
   cluster_id           = "${var.app_name}-${var.purpose}-${var.environment}"
-  engine               = "redis"
+  engine               = var.engine
   engine_version       = var.engine_version
   node_type            = var.node_type
   num_cache_nodes      = var.num_cache_nodes
@@ -18,7 +18,7 @@ resource "aws_elasticache_cluster" "main" {
   tags = merge(
     var.tags,
     {
-      Name = "${var.app}-${var.purpose}-${var.environment}"
+      Name = "${var.app_name}-${var.purpose}-${var.environment}"
     }
   )
 }

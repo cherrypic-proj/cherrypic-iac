@@ -22,7 +22,7 @@ resource "aws_dynamodb_table" "main" {
   tags = merge(
     var.tags,
     {
-      Name = "${var.app_name}-${var.environment}-${var.table_name}"
+      Name = "${var.app_name}-${var.table_name}-${var.environment}"
     }
   )
 }

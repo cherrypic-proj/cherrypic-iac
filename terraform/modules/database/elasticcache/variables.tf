@@ -8,6 +8,12 @@ variable "purpose" {
   type        = string
 }
 
+variable "engine" {
+  description = "엘라스틱 캐시에 사용되는 엔진 (ex: redis)"
+  type        = string
+  default = "redis"
+}
+
 variable "environment" {
   description = "환경 이름 (예: dev, prod 등)"
   type        = string
