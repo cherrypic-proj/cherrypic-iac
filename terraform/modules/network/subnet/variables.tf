@@ -19,13 +19,13 @@ variable "tags" {
   default     = {}
 }
 
-variable "name" {
-  description = "Name 태그의 접두사 (예: cherrypic)"
+variable "app_name" {
+  description = "앱 이름(예: cherrypic)"
   type        = string
 }
 
-variable "type" {
-  description = "서브넷의 타입 (예: public, private)"
+variable "access_level" {
+  description = "인터넷 접근 가능 여부 (예: public, private)"
   type        = string
 }
 

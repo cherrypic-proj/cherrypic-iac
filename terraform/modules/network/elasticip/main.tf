@@ -4,7 +4,7 @@ resource "aws_eip" "main" {
   tags = merge(
     var.tags,
     {
-      Name = "${var.name}-eip"
+      Name = "${var.app_name}-eip"
     }
   )
 }

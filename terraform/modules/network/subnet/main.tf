@@ -6,7 +6,10 @@ resource "aws_subnet" "main" {
   tags = merge(
     var.tags,
     {
-      Name = "${var.name}-${var.type}-subnet-${var.index}"
+      Name = "${var.app_name}-${var.access_level}-subnet-${var.index}"
     }
   )
 }
+
+
+{myApp}-[public or private]-subnet-[index]
