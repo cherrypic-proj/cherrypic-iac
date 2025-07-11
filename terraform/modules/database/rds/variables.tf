@@ -64,7 +64,7 @@ variable "skip_final_snapshot" {
 variable "publicly_accessible" {
   type        = bool
   default     = false
-  description = "퍼블릭 접근 가능 여부"
+  description = "인터넷 접근 가능 여부"
 }
 
 variable "backup_retention_period" {

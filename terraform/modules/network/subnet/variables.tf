@@ -25,7 +25,7 @@ variable "app_name" {
 }
 
 variable "access_level" {
-  description = "서브넷의 공개 여부 (예: public, private)"
+  description = "인터넷 접근 가능 여부 (예: public, private)"
   type        = string
 }
 

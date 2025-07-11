@@ -21,7 +21,7 @@ variable "enable_sse" {
 }
 
 variable "enable_block_public_access" {
-  description = "퍼블릭 접근 차단 활성화 여부"
+  description = "인터넷 접근 차단 활성화 여부"
   type        = bool
   default     = true
 }
