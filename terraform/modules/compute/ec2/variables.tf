@@ -1,10 +1,10 @@
-variable "name" {
-  description = "EC2 인스턴스의 기본 이름 (예: app, db)"
+variable "app_name" {
+  description = "앱 이름 (ex: cherrypic)"
   type        = string
 }
 
 variable "purpose" {
-  description = "인스턴스의 용도 (예: web, api)"
+  description = "인스턴스의 용도 (예: was)"
   type        = string
 }
 

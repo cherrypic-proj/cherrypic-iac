@@ -1,10 +1,10 @@
 resource "aws_s3_bucket" "main" {
-  bucket = var.bucket_name
+  bucket = "${var.app}-bucket-${var.environment}"
 
   tags = merge(
     var.tags,
     {
-      Name = var.bucket_name
+      Name = "${var.app}-bucket-${var.environment}"
     }
   )
 }
@@ -30,7 +30,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "main" {
 }
 
 resource "aws_s3_bucket_public_access_block" "main" {
-  count = var.enable_block_public_access ? 1 : 0
+  count  = var.enable_block_public_access ? 1 : 0
   bucket = aws_s3_bucket.main.id
 
   block_public_acls       = true

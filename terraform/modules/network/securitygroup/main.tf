@@ -1,5 +1,5 @@
 resource "aws_security_group" "main" {
-  name        = var.name
+  name        = "${var.purpose}-${var.env}-sg"
   description = var.description
   vpc_id      = var.vpc_id
 
@@ -26,7 +26,7 @@ resource "aws_security_group" "main" {
   tags = merge(
     var.tags,
     {
-      Name = var.name
+      Name = "${var.purpose}-${var.env}-sg"
     }
   )
 }

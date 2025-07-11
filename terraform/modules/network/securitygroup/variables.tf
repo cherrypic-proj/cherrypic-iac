@@ -48,3 +48,13 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "purpose" {
+  description = "보안 그룹의 용도 (예: jenkins, db, bastion)"
+  type        = string
+}
+
+variable "env" {
+  description = "배포 환경 구분 (예: dev, stage, prod)"
+  type        = string
+}

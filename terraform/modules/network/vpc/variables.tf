@@ -1,5 +1,5 @@
-variable "name" {
-  description = "리소스 이름 접두어"
+variable "app_name" {
+  description = "앱 이름 ex) cherrypic"
   type        = string
 }
 
@@ -9,7 +9,7 @@ variable "cidr_block" {
 }
 
 variable "tags" {
-  description = "공통으로 적용할 태그 맵 (예: Environment, Project 등)"
+  description = "공통 태그"
   type        = map(string)
   default     = {}
 }

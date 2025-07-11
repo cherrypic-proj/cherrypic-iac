@@ -1,14 +1,14 @@
-output "cluster_id" {
-  description = "ElastiCache 클러스터 ID"
+output "elasticache_cluster_id" {
   value       = aws_elasticache_cluster.main.id
+  description = "ElastiCache 클러스터 ID"
 }
 
-output "endpoint" {
-  description = "접속 엔드포인트 주소"
+output "elasticache_endpoint" {
   value       = aws_elasticache_cluster.main.cache_nodes[0].address
+  description = "ElastiCache 클러스터 엔드포인트"
 }
 
-output "port" {
-  description = "접속 포트"
+output "elasticache_port" {
   value       = aws_elasticache_cluster.main.cache_nodes[0].port
+  description = "ElastiCache 클러스터 포트"
 }

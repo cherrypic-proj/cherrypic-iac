@@ -3,8 +3,8 @@ variable "vpc_id" {
   type        = string
 }
 
-variable "name" {
-  description = "리소스 이름 접두어"
+variable "app_name" {
+  description = "앱 이름 (예: cherrypic)"
   type        = string
 }
 

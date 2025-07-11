@@ -1,73 +1,94 @@
-variable "app" {
-  description = "애플리케이션 이름"
+variable "app_name" {
   type        = string
+  description = "앱 이름 (ex: cherrypic)"
 }
 
 variable "environment" {
-  description = "환경 이름 (예: dev, prod)"
   type        = string
+  description = "환경 (예: dev, staging, prod)"
 }
 
 variable "engine" {
-  description = "데이터베이스 엔진 (예: mysql, postgres)"
   type        = string
+  description = "RDS 엔진 이름 (예: mysql, postgres)"
 }
 
 variable "engine_version" {
-  description = "엔진 버전"
   type        = string
+  description = "RDS 엔진 버전"
 }
 
 variable "instance_class" {
-  description = "RDS 인스턴스 타입"
   type        = string
+  description = "RDS 인스턴스 타입"
 }
 
 variable "allocated_storage" {
-  description = "할당된 스토리지 (GiB 단위)"
   type        = number
+  description = "할당된 스토리지 (GiB)"
 }
 
 variable "username" {
-  description = "마스터 사용자 이름"
   type        = string
+  description = "DB 관리자 계정 이름"
 }
 
 variable "password" {
-  description = "마스터 사용자 비밀번호"
   type        = string
+  description = "DB 관리자 비밀번호"
   sensitive   = true
 }
 
-variable "db_subnet_group_name" {
-  description = "연결할 DB 서브넷 그룹 이름"
+variable "subnet_ids" {
+  type        = list(string)
+  description = "DB Subnet Group에 포함할 서브넷 ID 리스트"
+}
+
+variable "subnet_group_description" {
   type        = string
+  default     = "RDS subnet group"
+  description = "서브넷 그룹 설명"
 }
 
 variable "vpc_security_group_ids" {
-  description = "연결할 보안 그룹 ID 목록"
   type        = list(string)
+  description = "연결할 VPC 보안 그룹 ID 리스트"
 }
 
 variable "skip_final_snapshot" {
-  description = "삭제 시 최종 스냅샷 생략 여부"
   type        = bool
   default     = true
+  description = "삭제 시 최종 스냅샷을 건너뛸지 여부"
 }
 
 variable "publicly_accessible" {
-  description = "퍼블릭 접근 허용 여부"
   type        = bool
   default     = false
+  description = "퍼블릭 접근 가능 여부"
 }
 
 variable "backup_retention_period" {
-  description = "백업 보관 일수"
   type        = number
+  default     = 7
+  description = "백업 보존 기간 (일)"
+}
+
+variable "parameter_group_family" {
+  type        = string
+  description = "Parameter group family (예: mysql8.0, postgres15 등)"
+}
+
+variable "parameter_group_parameters" {
+  type = list(object({
+    name  = string
+    value = string
+  }))
+  description = "RDS 파라미터 설정 리스트"
+  default     = []
 }
 
 variable "tags" {
-  description = "공통 태그"
   type        = map(string)
   default     = {}
+  description = "공통 태그"
 }

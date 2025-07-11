@@ -1,14 +1,9 @@
-output "rds_instance_id" {
-  description = "RDS 인스턴스 ID"
+output "db_instance_id" {
   value       = aws_db_instance.main.id
+  description = "RDS 인스턴스 ID"
 }
 
-output "rds_endpoint" {
-  description = "RDS 인스턴스 엔드포인트 주소"
+output "db_instance_endpoint" {
   value       = aws_db_instance.main.endpoint
-}
-
-output "rds_address" {
-  description = "RDS 도메인 주소"
-  value       = aws_db_instance.main.address
+  description = "RDS 접속 엔드포인트"
 }

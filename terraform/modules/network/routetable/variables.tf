@@ -4,12 +4,12 @@ variable "vpc_id" {
 }
 
 variable "name" {
-  description = "리소스 이름 접두어 (예: cherrypic)"
+  description = "앱 이름 (예: cherrypic)"
   type        = string
 }
 
-variable "type" {
-  description = "서브넷 타입 (예: public, private)"
+variable "access_level" {
+  description = "서브넷 공개 여부 (예: public, private)"
   type        = string
 }
 

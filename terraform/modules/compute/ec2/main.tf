@@ -8,7 +8,7 @@ resource "aws_instance" "main" {
   tags = merge(
     var.tags,
     {
-      Name = "${var.name}-${var.purpose}-${var.environment}"
+      Name = "${var.app_name}-${var.purpose}-${var.environment}"
     }
   )
 

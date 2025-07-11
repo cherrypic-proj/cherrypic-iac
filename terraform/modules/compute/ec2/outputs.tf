@@ -12,8 +12,3 @@ output "private_ip" {
   description = "EC2 인스턴스의 프라이빗 IP"
   value       = aws_instance.main.private_ip
 }
-
-output "availability_zone" {
-  description = "EC2 인스턴스가 생성된 가용 영역"
-  value       = aws_instance.main.availability_zone
-}
