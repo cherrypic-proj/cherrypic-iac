@@ -1,4 +1,4 @@
-variable "app" {
+variable "app_name" {
   description = "애플리케이션 이름 (예: cherrypic)"
   type        = string
 }
