@@ -4,7 +4,7 @@ variable "environment" {
 }
 
 variable "purpose" {
-  description = "사용 용도 (예: tfvars, image)"
+  description = "사용 용도 (예: tfstate, image)"
   type        = string
 }
 
