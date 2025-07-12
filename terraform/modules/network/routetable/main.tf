@@ -8,3 +8,10 @@ resource "aws_route_table" "main" {
     }
   )
 }
+
+resource "aws_route" "igw" {
+  count                  = var.igw_id != null ? 1 : 0
+  route_table_id         = aws_route_table.main.id
+  destination_cidr_block = var.destination_cidr_block
+  gateway_id             = var.igw_id
+}

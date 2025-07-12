@@ -1,8 +1,3 @@
-variable "name" {
-  description = "보안 그룹 이름"
-  type        = string
-}
-
 variable "description" {
   description = "보안 그룹 설명"
   type        = string
@@ -17,14 +12,13 @@ variable "vpc_id" {
 variable "ingress_rules" {
   description = "인바운드 규칙 목록"
   type = list(object({
-    from_port   = number
-    to_port     = number
-    protocol    = string
-    cidr_blocks = list(string)
+    from_port                = number
+    to_port                  = number
+    protocol                 = string
+    cidr_blocks              = optional(list(string), [])
+    source_security_group_id = optional(string)
   }))
-  default = []
 }
-
 variable "egress_rules" {
   description = "아웃바운드 규칙 목록"
   type = list(object({

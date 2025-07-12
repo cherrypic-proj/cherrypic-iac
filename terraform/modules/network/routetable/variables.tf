@@ -13,3 +13,15 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "igw_id" {
+  description = "(옵션) 연결할 인터넷 게이트웨이 ID"
+  type        = string
+  default     = null
+}
+
+variable "destination_cidr_block" {
+  description = "(옵션) IGW 라우팅 대상 CIDR (기본: 0.0.0.0/0)"
+  type        = string
+  default     = "0.0.0.0/0"
+}

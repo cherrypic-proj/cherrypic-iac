@@ -1,8 +1,3 @@
-variable "app_name" {
-  description = "앱 이름 (ex: cherrypic)"
-  type        = string
-}
-
 variable "purpose" {
   description = "인스턴스의 용도 (예: was)"
   type        = string
@@ -59,4 +54,10 @@ variable "tags" {
   description = "추가로 인스턴스에 적용할 태그"
   type        = map(string)
   default     = {}
+}
+
+variable "eip_allocation_id" {
+  description = "연결할 Elastic IP의 allocation ID (없으면 연결하지 않음)"
+  type        = string
+  default     = null
 }
