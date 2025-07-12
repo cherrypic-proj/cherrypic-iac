@@ -3,12 +3,12 @@
 module "rds_mysql" {
   source = "../../modules/database/rds"
 
-  engine             = "mysql"
-  engine_version     = "8.4.3"
-  instance_class     = "db.t3.micro"
-  allocated_storage  = 20
-  username = var.username
-  password = var.password
+  engine            = "mysql"
+  engine_version    = "8.4.3"
+  instance_class    = "db.t3.micro"
+  allocated_storage = 20
+  username          = var.username
+  password          = var.password
 
   vpc_security_group_ids = [
     module.db_dev_sg.id

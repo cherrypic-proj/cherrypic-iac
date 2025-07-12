@@ -1,7 +1,7 @@
 # ============= VPC ===============
 
 module "vpc" {
-  source     = "../../modules/network/vpc"
+  source = "../../modules/network/vpc"
 
   cidr_block = "10.0.0.0/16"
 }
@@ -9,29 +9,29 @@ module "vpc" {
 # ============= Internet Gateway ===============
 
 module "internet_gateway" {
-  source  = "../../modules/network/igw"
-  vpc_id  = module.vpc.id
-  tags    = local.common_tags
+  source = "../../modules/network/igw"
+  vpc_id = module.vpc.id
+  tags   = local.common_tags
 }
 
 # ============= Route Table ===============
 
 module "public_route_table" {
-  source        = "../../modules/network/routetable"
-  vpc_id        = module.vpc.id
-  access_level  = "public"
-  igw_id        = module.internet_gateway.id
+  source                 = "../../modules/network/routetable"
+  vpc_id                 = module.vpc.id
+  access_level           = "public"
+  igw_id                 = module.internet_gateway.id
   destination_cidr_block = "0.0.0.0/0"
-  enable_igw_route = true
-  tags          = local.common_tags
+  enable_igw_route       = true
+  tags                   = local.common_tags
 }
 
 module "private_route_table" {
-  source        = "../../modules/network/routetable"
-  vpc_id        = module.vpc.id
-  access_level  = "private"
+  source           = "../../modules/network/routetable"
+  vpc_id           = module.vpc.id
+  access_level     = "private"
   enable_igw_route = false
-  tags          = local.common_tags
+  tags             = local.common_tags
 }
 
 # ============= Security Group ===============

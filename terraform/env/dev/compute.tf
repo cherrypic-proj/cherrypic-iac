@@ -8,12 +8,12 @@ module "bastion_dev" {
   associate_public_ip    = false
   key_name               = "cherrypic-bastion-host-dev-key"
 
-  root_volume_size       = 30
-  root_volume_type       = "gp3"
-  purpose                = "bastion"
-  environment            = local.env
-  enable_eip             = false
-  tags = local.common_tags
+  root_volume_size = 30
+  root_volume_type = "gp3"
+  purpose          = "bastion"
+  environment      = local.env
+  enable_eip       = false
+  tags             = local.common_tags
 }
 
 module "jenkins_dev" {
@@ -26,14 +26,14 @@ module "jenkins_dev" {
   associate_public_ip    = false
   key_name               = "cherrypic-jenkins-dev-key"
 
-  root_volume_size       = 30
-  root_volume_type       = "gp3"
-  purpose                = "jenkins"
-  environment            = local.env
+  root_volume_size = 30
+  root_volume_type = "gp3"
+  purpose          = "jenkins"
+  environment      = local.env
 
-  enable_eip             = true
-  eip_allocation_id      = module.eip_jenkins.id
-  tags = local.common_tags
+  enable_eip        = true
+  eip_allocation_id = module.eip_jenkins.id
+  tags              = local.common_tags
 }
 
 
@@ -47,13 +47,13 @@ module "was_dev" {
   associate_public_ip    = false
   key_name               = "cherrypic-was-dev-key"
 
-  root_volume_size       = 30
-  root_volume_type       = "gp3"
-  purpose                = "was"
-  environment            = local.env
+  root_volume_size = 30
+  root_volume_type = "gp3"
+  purpose          = "was"
+  environment      = local.env
 
-  enable_eip             = true
-  eip_allocation_id      = module.eip_was.id
-  tags = local.common_tags
+  enable_eip        = true
+  eip_allocation_id = module.eip_was.id
+  tags              = local.common_tags
 }
 

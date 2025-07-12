@@ -2,9 +2,9 @@ locals {
   env = "dev"
 
   common_tags = {
-    App     = "cherrypic"
+    App         = "cherrypic"
     Environment = "dev"
-    Team       = "backend"
+    Team        = "backend"
     ManagedBy   = "terraform"
   }
 }
