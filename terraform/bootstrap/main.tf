@@ -3,14 +3,13 @@ terraform {
 }
 
 provider "aws" {
-  region  = ap-northeast-2
+  region  = "ap-northeast-2"
 }
 
 module "tf_state_bucket" {
-  source = "../../modules/storage/s3"
+  source = "../modules/storage/s3"
 
-  app_name                   = cherrypic
-  purpose                    = tfstate
+  purpose                    = "tfstate"
   environment                = var.environment
   enable_versioning          = false
   enable_sse                 = true
@@ -19,10 +18,10 @@ module "tf_state_bucket" {
 }
 
 module "tf_lock_table" {
-  source = "../../modules/database/dynamodb"
+  source = "../modules/database/dynamodb"
 
   environment      = var.environment
-  purpose          = tfstate
+  purpose          = "tfstate"
   billing_mode     = "PAY_PER_REQUEST"
   hash_key         = "LockID"
   hash_key_type    = "S"

@@ -3,11 +3,6 @@ variable "environment" {
   type        = string
 }
 
-variable "table_name" {
-  description = "dynamoDB 테이블 이름"
-  type        = string
-}
-
 variable "tags" {
   description = "공통 태그 맵"
   type        = map(string)
