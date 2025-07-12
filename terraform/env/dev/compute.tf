@@ -12,7 +12,7 @@ module "bastion_dev" {
   root_volume_type       = "gp3"
   purpose                = "bastion"
   environment            = local.env
-
+  enable_eip             = false
   tags = local.common_tags
 }
 
@@ -21,7 +21,7 @@ module "jenkins_dev" {
 
   ami_id                 = data.aws_ami.ubuntu_latest.id
   instance_type          = "t3a.small"
-  subnet_id              = module.public_subnet_2
+  subnet_id              = module.public_subnet_2.id
   vpc_security_group_ids = [module.jenkins_dev_sg.id]
   associate_public_ip    = false
   key_name               = "cherrypic-jenkins-dev-key"
@@ -31,8 +31,8 @@ module "jenkins_dev" {
   purpose                = "jenkins"
   environment            = local.env
 
-  eip_allocation_id      = module.eip_jenkins
-
+  enable_eip             = true
+  eip_allocation_id      = module.eip_jenkins.id
   tags = local.common_tags
 }
 
@@ -42,7 +42,7 @@ module "was_dev" {
 
   ami_id                 = data.aws_ami.ubuntu_latest.id
   instance_type          = "t2.micro"
-  subnet_id              = module.public_subnet_1
+  subnet_id              = module.public_subnet_1.id
   vpc_security_group_ids = [module.was_dev_sg.id]
   associate_public_ip    = false
   key_name               = "cherrypic-was-dev-key"
@@ -52,8 +52,8 @@ module "was_dev" {
   purpose                = "was"
   environment            = local.env
 
-  eip_allocation_id      = module.eip_was
-
+  enable_eip             = true
+  eip_allocation_id      = module.eip_was.id
   tags = local.common_tags
 }
 

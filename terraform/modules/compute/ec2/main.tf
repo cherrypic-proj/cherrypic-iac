@@ -26,8 +26,8 @@ resource "aws_instance" "main" {
   }
 }
 
-resource "aws_eip_association" "this" {
-  count = var.eip_allocation_id != null ? 1 : 0
+resource "aws_eip_association" "main" {
+  count = var.enable_eip ? 1 : 0
 
   instance_id   = aws_instance.main.id
   allocation_id = var.eip_allocation_id

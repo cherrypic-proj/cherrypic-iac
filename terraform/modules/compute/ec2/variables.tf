@@ -57,7 +57,13 @@ variable "tags" {
 }
 
 variable "eip_allocation_id" {
-  description = "연결할 Elastic IP의 allocation ID (없으면 연결하지 않음)"
+  description = "할당된 EIP의 ID. 없으면 할당하지 않음."
   type        = string
-  default     = null
+  default     = ""
 }
+
+variable "enable_eip" {
+  type    = bool
+  default = false
+}
+

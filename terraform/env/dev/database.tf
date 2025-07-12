@@ -11,7 +11,7 @@ module "rds_mysql" {
   password = var.password
 
   vpc_security_group_ids = [
-    module.db_dev_sg
+    module.db_dev_sg.id
   ]
 
   subnet_ids = [

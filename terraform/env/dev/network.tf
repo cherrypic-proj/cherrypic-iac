@@ -22,6 +22,7 @@ module "public_route_table" {
   access_level  = "public"
   igw_id        = module.internet_gateway.id
   destination_cidr_block = "0.0.0.0/0"
+  enable_igw_route = true
   tags          = local.common_tags
 }
 
@@ -29,6 +30,7 @@ module "private_route_table" {
   source        = "../../modules/network/routetable"
   vpc_id        = module.vpc.id
   access_level  = "private"
+  enable_igw_route = false
   tags          = local.common_tags
 }
 

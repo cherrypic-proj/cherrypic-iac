@@ -15,13 +15,19 @@ variable "tags" {
 }
 
 variable "igw_id" {
-  description = "(옵션) 연결할 인터넷 게이트웨이 ID"
+  description = "인터넷 게이트웨이 ID (없으면 public route 생략)"
   type        = string
-  default     = null
+  default     = ""
 }
 
 variable "destination_cidr_block" {
   description = "(옵션) IGW 라우팅 대상 CIDR (기본: 0.0.0.0/0)"
   type        = string
   default     = "0.0.0.0/0"
+}
+
+variable "enable_igw_route" {
+  description = "IGW 라우트를 추가할지 여부"
+  type        = bool
+  default     = false
 }
