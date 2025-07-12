@@ -17,16 +17,16 @@ bootstrap 모듈은 `dev` 또는 `prod` 환경을 실행하기 전에 반드시 
 
 ## ⚙️ 사용법
 > ❗ **주의:** 이 과정은 ci/cd에 포함되지 않으며 반드시 최초 1회 수동 실행되어야 합니다.
-- providers에서 자격증명은 생략되어 있고 이는 env를 통해서 주입 받습니다.
-- .env파일을 생성하고 AWS access key와 AWS secret access key를 입력해 주세요.
 
-> 예시)
+- 환경.secret.tfvars를 만들고 내부에 AWS 접속 관련 Key를 넣어주세요 (gitignore 됩니다).
+
+> 예시) dev.secret.tfvars
 > 
-> AWS_ACCESS_KEY_ID= (access key)
+> aws_access_key (access key)
 > 
-> AWS_SECRET_ACCESS_KEY= (secret key)
-- .envrc를 실행하여 env 파일을 초기화 해주세요.
-- 다음으로 환경에 맞는 tfvars를 기준으로 terraform을 실행해 주세요
+> aws_secret_key= (secret key)
+
+- 그 후 터미널에서 다음 명령어를 실행해 주세요.
 
 ```bash
 # example : dev 환경 초기화
@@ -35,7 +35,9 @@ bootstrap 모듈은 `dev` 또는 `prod` 환경을 실행하기 전에 반드시 
 terraform init
 
 # 계획 확인: dev 환경 기준으로 리소스 변경 내역 확인
-terraform plan -var-file=dev.tfvars
+terraform plan \
+  -var-file="dev.tfvars" \
+  -var-file="dev.secret.tfvars"
 
 # 적용: 문제가 없다면 실제 인프라 적용
 terraform apply -var-file=dev.tfvars

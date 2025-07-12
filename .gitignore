@@ -1,6 +1,3 @@
-# Terraform variable files (보안 및 환경별 값 보호)
-/*.tfvars
-
 ### Custom ###
 .env
 
@@ -11,3 +8,6 @@ terraform/bootstrap/terraform.tfstate.backup
 
 # Terraform provider/module cache
 terraform/bootstrap/.terraform/
+
+## Secret tfvars
+**/*.secret.tfvars
