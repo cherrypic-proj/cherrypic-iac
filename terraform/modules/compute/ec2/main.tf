@@ -3,7 +3,14 @@ resource "aws_instance" "main" {
   instance_type          = var.instance_type
   subnet_id              = var.subnet_id
   vpc_security_group_ids = var.vpc_security_group_ids
-  associate_public_ip    = var.associate_public_ip
+  key_name               = var.key_name
+  associate_public_ip_address = var.associate_public_ip
+
+  root_block_device {
+    volume_size           = var.root_volume_size
+    volume_type           = var.root_volume_type
+    delete_on_termination = true
+  }
 
   tags = merge(
     var.tags,
@@ -11,19 +18,6 @@ resource "aws_instance" "main" {
       Name = "cherrypic-${var.purpose}-${var.environment}"
     }
   )
-
-  dynamic "key_name" {
-    for_each = var.key_name != null ? [var.key_name] : []
-    content {
-      key_name = key_name.value
-    }
-  }
-
-  root_block_device {
-    volume_size           = var.root_volume_size
-    volume_type           = var.root_volume_type
-    delete_on_termination = true
-  }
 }
 
 resource "aws_eip_association" "main" {

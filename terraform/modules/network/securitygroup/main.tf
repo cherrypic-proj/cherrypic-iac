@@ -3,32 +3,52 @@ resource "aws_security_group" "main" {
   description = var.description
   vpc_id      = var.vpc_id
 
-  dynamic "ingress" {
-    for_each = var.ingress_rules
-    content {
-      from_port   = ingress.value.from_port
-      to_port     = ingress.value.to_port
-      protocol    = ingress.value.protocol
-
-      cidr_blocks              = try(ingress.value.cidr_blocks, null)
-      source_security_group_id = try(ingress.value.source_security_group_id, null)
-    }
-  }
-
-  dynamic "egress" {
-    for_each = var.egress_rules
-    content {
-      from_port   = egress.value.from_port
-      to_port     = egress.value.to_port
-      protocol    = egress.value.protocol
-      cidr_blocks = egress.value.cidr_blocks
-    }
-  }
-
   tags = merge(
     var.tags,
     {
       Name = "${var.purpose}-${var.env}-sg"
     }
   )
+}
+
+resource "aws_security_group_rule" "ingress_cidr" {
+  for_each = {
+    for idx, rule in var.ingress_rules :
+    idx => rule if contains(keys(rule), "cidr_blocks")
+  }
+
+  type              = "ingress"
+  from_port         = each.value.from_port
+  to_port           = each.value.to_port
+  protocol          = each.value.protocol
+  cidr_blocks       = each.value.cidr_blocks
+  security_group_id = aws_security_group.main.id
+}
+
+resource "aws_security_group_rule" "ingress_sg" {
+  for_each = {
+    for idx, rule in var.ingress_rules :
+    idx => rule if contains(keys(rule), "source_security_group_id")
+  }
+
+  type                     = "ingress"
+  from_port                = each.value.from_port
+  to_port                  = each.value.to_port
+  protocol                 = each.value.protocol
+  source_security_group_id = each.value.source_security_group_id
+  security_group_id        = aws_security_group.main.id
+}
+
+resource "aws_security_group_rule" "egress" {
+  for_each = {
+    for idx, rule in var.egress_rules :
+    idx => rule
+  }
+
+  type              = "egress"
+  from_port         = each.value.from_port
+  to_port           = each.value.to_port
+  protocol          = each.value.protocol
+  cidr_blocks       = each.value.cidr_blocks
+  security_group_id = aws_security_group.main.id
 }
