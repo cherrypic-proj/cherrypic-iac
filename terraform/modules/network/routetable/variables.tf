@@ -3,11 +3,6 @@ variable "vpc_id" {
   type        = string
 }
 
-variable "app_name" {
-  description = "앱 이름 (예: cherrypic)"
-  type        = string
-}
-
 variable "access_level" {
   description = "인터넷 접근 가능 여부 (예: public, private)"
   type        = string

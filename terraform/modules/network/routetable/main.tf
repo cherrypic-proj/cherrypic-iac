@@ -4,7 +4,7 @@ resource "aws_route_table" "main" {
   tags = merge(
     var.tags,
     {
-      Name = "${var.app_name}-${var.access_level}-rt"
+      Name = "cherrypic-${var.access_level}-rt"
     }
   )
 }

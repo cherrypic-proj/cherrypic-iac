@@ -1,8 +1,3 @@
-variable "app_name" {
-  description = "앱 이름 ex) cherrypic"
-  type        = string
-}
-
 variable "cidr_block" {
   description = "VPC CIDR 블록"
   type        = string

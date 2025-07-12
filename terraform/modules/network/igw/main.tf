@@ -4,7 +4,7 @@ resource "aws_internet_gateway" "main" {
   tags = merge(
     var.tags,
     {
-      Name = "${var.app_name}-igw"
+      Name = "cherrypic-igw"
     }
   )
 }

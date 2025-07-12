@@ -1,8 +1,3 @@
-variable "app_name" {
-  description = "앱 이름 (ex: cherrypic)"
-  type        = string
-}
-
 variable "environment" {
   description = "환경 이름 (예: dev, prod)"
   type        = string

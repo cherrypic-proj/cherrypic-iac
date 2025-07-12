@@ -1,8 +1,3 @@
-variable "app_name" {
-  description = "애플리케이션 이름 (예: cherrypic)"
-  type        = string
-}
-
 variable "purpose" {
   description = "캐시 용도 (예: cache, session 등)"
   type        = string

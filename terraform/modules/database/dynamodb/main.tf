@@ -1,5 +1,5 @@
 resource "aws_dynamodb_table" "main" {
-  name           = "${var.app_name}-${var.table_name}-${var.environment}"
+  name           = "cherrypic-${var.table_name}-${var.environment}"
   billing_mode   = var.billing_mode
   hash_key       = var.hash_key
   range_key      = var.range_key
@@ -22,7 +22,7 @@ resource "aws_dynamodb_table" "main" {
   tags = merge(
     var.tags,
     {
-      Name = "${var.app_name}-${var.table_name}-${var.environment}"
+      Name = "cherrypic-${var.table_name}-${var.environment}"
     }
   )
 }

@@ -1,11 +1,11 @@
 resource "aws_elasticache_subnet_group" "main" {
-  name        = "${var.app_name}-${var.purpose}-subnet-group"
+  name        = "cherrypic-${var.purpose}-subnet-group"
   subnet_ids  = var.subnet_ids
   description = var.subnet_group_description
 }
 
 resource "aws_elasticache_cluster" "main" {
-  cluster_id           = "${var.app_name}-${var.purpose}-${var.environment}"
+  cluster_id           = "cherrypic-${var.purpose}-${var.environment}"
   engine               = var.engine
   engine_version       = var.engine_version
   node_type            = var.node_type
@@ -18,7 +18,7 @@ resource "aws_elasticache_cluster" "main" {
   tags = merge(
     var.tags,
     {
-      Name = "${var.app_name}-${var.purpose}-${var.environment}"
+      Name = "cherrypic-${var.purpose}-${var.environment}"
     }
   )
 }
