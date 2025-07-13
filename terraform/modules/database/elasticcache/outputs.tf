@@ -9,6 +9,6 @@ output "elasticache_primary_endpoint" {
 }
 
 output "elasticache_port" {
-  value = aws_elasticache_replication_group.main.port
+  value       = aws_elasticache_replication_group.main.port
   description = "ElastiCache 클러스터 포트"
 }
