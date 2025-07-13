@@ -14,7 +14,7 @@ resource "aws_security_group" "main" {
 resource "aws_security_group_rule" "ingress_cidr" {
   for_each = {
     for idx, rule in var.ingress_rules :
-    idx => rule if contains(keys(rule), "cidr_blocks")
+    idx => rule if try(rule.use_cidr, false)
   }
 
   type              = "ingress"
@@ -28,7 +28,7 @@ resource "aws_security_group_rule" "ingress_cidr" {
 resource "aws_security_group_rule" "ingress_sg" {
   for_each = {
     for idx, rule in var.ingress_rules :
-    idx => rule if contains(keys(rule), "source_security_group_id")
+    idx => rule if try(rule.use_sg, false)
   }
 
   type                     = "ingress"

@@ -29,3 +29,21 @@ module "rds_mysql" {
   environment = local.env
   tags        = local.common_tags
 }
+
+# ============= Elastic Cache ===============
+
+module "cache_dev" {
+  source                   = "../../modules/database/elasticcache"
+  environment              = "dev"
+  purpose                  = "cache"
+  subnet_ids               = [module.private_subnet_1.id, module.private_subnet_2.id]
+  security_group_ids       = [module.cache_dev_sg.id]
+  node_type                = "cache.t2.micro"
+  num_cache_nodes          = 1
+  engine                   = "redis"
+  engine_version           = "8.0"
+  parameter_group_name     = "default.valkey8"
+  port                     = 6379
+  subnet_group_description = "Cherrypic cache subnet group"
+  tags                     = local.common_tags
+}

@@ -48,24 +48,32 @@ module "was_dev_sg" {
       from_port   = 8080
       to_port     = 8080
       protocol    = "tcp"
+      use_cidr    = true
+      use_sg      = false
       cidr_blocks = ["0.0.0.0/0"]
     },
     {
       from_port   = 443
       to_port     = 443
       protocol    = "tcp"
+      use_cidr    = true
+      use_sg      = false
       cidr_blocks = ["0.0.0.0/0"]
     },
     {
       from_port   = 22
       to_port     = 22
       protocol    = "tcp"
+      use_cidr    = true
+      use_sg      = false
       cidr_blocks = ["0.0.0.0/0"]
     },
     {
       from_port   = 80
       to_port     = 80
       protocol    = "tcp"
+      use_cidr    = true
+      use_sg      = false
       cidr_blocks = ["0.0.0.0/0"]
     }
   ]
@@ -75,6 +83,8 @@ module "was_dev_sg" {
       from_port   = 0
       to_port     = 0
       protocol    = "-1"
+      use_cidr    = true
+      use_sg      = false
       cidr_blocks = ["0.0.0.0/0"]
     }
   ]
@@ -94,6 +104,8 @@ module "bastion_dev_sg" {
       from_port   = 22
       to_port     = 22
       protocol    = "tcp"
+      use_cidr    = true
+      use_sg      = false
       cidr_blocks = ["0.0.0.0/0"]
     }
   ]
@@ -122,12 +134,16 @@ module "cache_dev_sg" {
       from_port                = 6379
       to_port                  = 6379
       protocol                 = "tcp"
+      use_cidr                 = false
+      use_sg                   = true
       source_security_group_id = module.bastion_dev_sg.id
     },
     {
       from_port                = 6379
       to_port                  = 6379
       protocol                 = "tcp"
+      use_cidr                 = false
+      use_sg                   = true
       source_security_group_id = module.was_dev_sg.id
     }
   ]
@@ -156,12 +172,16 @@ module "jenkins_dev_sg" {
       from_port   = 22
       to_port     = 22
       protocol    = "tcp"
+      use_cidr    = true
+      use_sg      = false
       cidr_blocks = ["0.0.0.0/0"]
     },
     {
       from_port   = 8080
       to_port     = 8080
       protocol    = "tcp"
+      use_cidr    = true
+      use_sg      = false
       cidr_blocks = ["0.0.0.0/0"]
     }
   ]
@@ -190,12 +210,16 @@ module "db_dev_sg" {
       from_port                = 3306
       to_port                  = 3306
       protocol                 = "tcp"
+      use_cidr                 = false
+      use_sg                   = true
       source_security_group_id = module.was_dev_sg.id
     },
     {
       from_port                = 3306
       to_port                  = 3306
       protocol                 = "tcp"
+      use_cidr                 = false
+      use_sg                   = true
       source_security_group_id = module.bastion_dev_sg.id
     }
   ]

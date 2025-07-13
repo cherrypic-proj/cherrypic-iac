@@ -15,6 +15,8 @@ variable "ingress_rules" {
     from_port                = number
     to_port                  = number
     protocol                 = string
+    use_cidr                 = bool
+    use_sg                   = bool
     cidr_blocks              = optional(list(string), [])
     source_security_group_id = optional(string)
   }))
