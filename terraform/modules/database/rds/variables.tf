@@ -82,6 +82,12 @@ variable "parameter_group_parameters" {
   default     = []
 }
 
+variable "db_name" {
+  description = "기본으로 생성할 DB 이름"
+  type        = string
+  default     = "cherrypic"
+}
+
 variable "tags" {
   type        = map(string)
   default     = {}

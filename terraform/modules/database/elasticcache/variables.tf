@@ -9,6 +9,12 @@ variable "engine" {
   default     = "redis"
 }
 
+variable "replicas_per_node_group" {
+  description = "Number of read replicas per node group"
+  type        = number
+  default     = 0
+}
+
 variable "environment" {
   description = "환경 이름 (예: dev, prod 등)"
   type        = string

@@ -34,6 +34,7 @@ resource "aws_db_instance" "main" {
   publicly_accessible     = var.publicly_accessible
   backup_retention_period = var.backup_retention_period
   parameter_group_name    = aws_db_parameter_group.main.name
+  db_name = var.db_name
 
   tags = merge(
     var.tags,
