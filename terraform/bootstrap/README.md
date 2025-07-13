@@ -21,9 +21,9 @@ bootstrap 모듈은 `dev` 또는 `prod` 환경을 실행하기 전에 반드시 
 
 > 예시) dev.secret.tfvars
 > 
-> aws_access_key (access key)
+> access_key_id (access key)
 > 
-> aws_secret_key= (secret key)
+> secret_access_key= (secret key)
 
 - 그 후 터미널에서 다음 명령어를 실행해 주세요.
 
