@@ -1,11 +1,11 @@
 variable "access_key_id" {
-  description = "AWS Access Key"
+  description = "AWS access key id"
   type        = string
   sensitive   = true
 }
 
 variable "secret_access_key" {
-  description = "AWS Secret Key"
+  description = "AWS secret access key"
   type        = string
   sensitive   = true
 }

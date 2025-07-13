@@ -10,11 +10,11 @@ variable "tags" {
 }
 
 variable "access_key_id" {
-  description = "AWS_ACCESS_KEY"
+  description = "AWS access key id"
   type        = string
 }
 
 variable "secret_access_key" {
-  description = "AWS_SECRET_KEY"
+  description = "AWS secret access key"
   type        = string
 }
