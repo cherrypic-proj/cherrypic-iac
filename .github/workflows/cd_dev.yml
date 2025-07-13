@@ -29,12 +29,12 @@ jobs:
         with:
           terraform_version: 1.12.2
 
-      - name: Terraform Init
-        run: terraform init
+      - name: Terraform Init (dev)
+        run: terraform -chdir=terraform/env/dev init
 
-      - name: Terraform Apply
+      - name: Terraform Apply (dev)
         run: |
-          terraform apply \
+          terraform -chdir=terraform/env/dev apply \
             -auto-approve \
             -input=false \
             -var="aws_access_key=${{ secrets.DEV_AWS_ACCESS_KEY_ID }}" \
