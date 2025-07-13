@@ -1,8 +1,8 @@
 environment = "prod"
 
 tags = {
-  App     = "cherrypic"
+  App         = "cherrypic"
   Environment = "prod"
-  Team       = "backend"
+  Team        = "backend"
   ManagedBy   = "terraform"
 }

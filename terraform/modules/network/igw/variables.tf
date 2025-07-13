@@ -4,6 +4,6 @@ variable "vpc_id" {
 }
 
 variable "tags" {
-  description =  "공통으로 적용할 태그 맵 (예: Environment, Project 등)"
+  description = "공통으로 적용할 태그 맵 (예: Environment, Project 등)"
   type        = map(string)
 }
