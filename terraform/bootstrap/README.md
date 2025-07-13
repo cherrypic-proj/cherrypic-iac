@@ -1,7 +1,7 @@
 # 📦 Terraform Bootstrap Module
 
 bootstrap 모듈은 `dev` 또는 `prod` 환경을 실행하기 전에 반드시 선행되어야 하는 기본 세팅입니다.
-- Terraform 상태 파일(tfstate) 저장을 위한 S3 버킷과 Lock 관리를 위한 DynamoDB 테이블을 생성하는 부트스트랩 모듈입니다.  
+- Terraform 상태 파일(tfstate) 저장을 위한 S3 버킷을 생성하는 부트스트랩 모듈입니다.  
 - CI/CD 및 협업 환경에서 Terraform 충돌을 방지하고 안전한 상태 관리가 가능하도록 합니다.
 
 ---
@@ -11,7 +11,6 @@ bootstrap 모듈은 `dev` 또는 `prod` 환경을 실행하기 전에 반드시 
 | 모듈 이름         | 설명 |
 |------------------|------|
 | `tf_state_bucket` | Terraform 상태 파일을 저장할 S3 버킷 생성 |
-| `tf_lock_table`   | 상태 파일 잠금용 DynamoDB 테이블 생성 |
 
 ---
 

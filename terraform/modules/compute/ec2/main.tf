@@ -15,7 +15,7 @@ resource "aws_instance" "main" {
   tags = merge(
     var.tags,
     {
-      Name = "cherrypic-${var.purpose}-${var.environment}"
+      Name = "cherrypic-${var.purpose}${var.environment != "" ? "-${var.environment}" : ""}"
     }
   )
 }

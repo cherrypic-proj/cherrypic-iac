@@ -41,8 +41,8 @@ module "cache_dev" {
   node_type                = "cache.t2.micro"
   num_cache_nodes          = 1
   engine                   = "redis"
-  engine_version           = "8.0"
-  parameter_group_name     = "default.valkey8"
+  engine_version           = "7.0"
+  parameter_group_name     = "default.redis7"
   port                     = 6379
   subnet_group_description = "Cherrypic cache subnet group"
   tags                     = local.common_tags

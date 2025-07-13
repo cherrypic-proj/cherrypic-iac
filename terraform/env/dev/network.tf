@@ -95,7 +95,7 @@ module "was_dev_sg" {
 module "bastion_dev_sg" {
   source      = "../../modules/network/securitygroup"
   purpose     = "bastion-host"
-  env         = local.env
+  env         = ""
   description = "Bastion Host Security Group"
   vpc_id      = module.vpc.id
 

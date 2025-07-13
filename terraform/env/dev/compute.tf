@@ -11,7 +11,7 @@ module "bastion_dev" {
   root_volume_size = 30
   root_volume_type = "gp3"
   purpose          = "bastion"
-  environment      = local.env
+  environment      = ""
   enable_eip       = false
   tags             = local.common_tags
 }
@@ -23,7 +23,7 @@ module "jenkins_dev" {
   instance_type          = "t3a.small"
   subnet_id              = module.public_subnet_2.id
   vpc_security_group_ids = [module.jenkins_dev_sg.id]
-  associate_public_ip    = false
+  associate_public_ip    = true
   key_name               = "cherrypic-jenkins-dev-key"
 
   root_volume_size = 30
@@ -44,7 +44,7 @@ module "was_dev" {
   instance_type          = "t2.micro"
   subnet_id              = module.public_subnet_1.id
   vpc_security_group_ids = [module.was_dev_sg.id]
-  associate_public_ip    = false
+  associate_public_ip    = true
   key_name               = "cherrypic-was-dev-key"
 
   root_volume_size = 30

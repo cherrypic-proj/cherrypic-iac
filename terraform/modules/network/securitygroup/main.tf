@@ -1,12 +1,12 @@
 resource "aws_security_group" "main" {
-  name        = "${var.purpose}-${var.env}-sg"
+  name = "${var.purpose}${var.env != "" ? "-${var.env}" : ""}-sg"
   description = var.description
   vpc_id      = var.vpc_id
 
   tags = merge(
     var.tags,
     {
-      Name = "${var.purpose}-${var.env}-sg"
+      Name = "${var.purpose}${var.env != "" ? "-${var.env}" : ""}-sg"
     }
   )
 }

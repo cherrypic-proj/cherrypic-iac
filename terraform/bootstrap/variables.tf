@@ -9,7 +9,7 @@ variable "tags" {
   default     = {}
 }
 
-variable "aws_access_key" {
+variable "access_key_id" {
   description = "AWS_ACCESS_KEY"
   type        = string
 }
