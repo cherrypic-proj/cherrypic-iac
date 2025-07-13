@@ -1,8 +1,3 @@
-variable "app_name" {
-  description = "앱 이름 (ex: cherrypic)"
-  type        = string
-}
-
 variable "purpose" {
   description = "인스턴스의 용도 (예: was)"
   type        = string
@@ -60,3 +55,15 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "eip_allocation_id" {
+  description = "할당된 EIP의 ID. 없으면 할당하지 않음."
+  type        = string
+  default     = ""
+}
+
+variable "enable_eip" {
+  type    = bool
+  default = false
+}
+

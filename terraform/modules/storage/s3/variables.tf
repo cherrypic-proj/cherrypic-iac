@@ -1,12 +1,13 @@
-variable "app_name" {
-  description = "애플리케이션 이름 (예: cherrypic)"
-  type        = string
-}
-
 variable "environment" {
   description = "환경 이름 (예: dev, prod 등)"
   type        = string
 }
+
+variable "purpose" {
+  description = "사용 용도 (예: tfstate, image)"
+  type        = string
+}
+
 
 variable "enable_versioning" {
   description = "버전 관리 활성화 여부"

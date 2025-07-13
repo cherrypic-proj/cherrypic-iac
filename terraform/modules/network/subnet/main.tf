@@ -6,10 +6,14 @@ resource "aws_subnet" "main" {
   tags = merge(
     var.tags,
     {
-      Name = "${var.app_name}-${var.access_level}-subnet-${var.index}"
+      Name = "cherrypic-${var.access_level}-subnet-${var.index}"
     }
   )
 }
 
+resource "aws_route_table_association" "main" {
+  subnet_id      = aws_subnet.main.id
+  route_table_id = var.route_table_id
+}
 
-{myApp}-[public or private]-subnet-[index]
+

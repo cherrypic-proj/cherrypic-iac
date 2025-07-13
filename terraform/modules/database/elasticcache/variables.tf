@@ -1,8 +1,3 @@
-variable "app_name" {
-  description = "애플리케이션 이름 (예: cherrypic)"
-  type        = string
-}
-
 variable "purpose" {
   description = "캐시 용도 (예: cache, session 등)"
   type        = string
@@ -11,7 +6,13 @@ variable "purpose" {
 variable "engine" {
   description = "엘라스틱 캐시에 사용되는 엔진 (ex: redis)"
   type        = string
-  default = "redis"
+  default     = "redis"
+}
+
+variable "replicas_per_node_group" {
+  description = "Number of read replicas per node group"
+  type        = number
+  default     = 0
 }
 
 variable "environment" {

@@ -1,0 +1,13 @@
+### Custom ###
+.env
+
+# Terraform state files (local state)
+terraform/bootstrap/terraform.tfstate
+terraform/bootstrap/.terraform.lock.hcl
+terraform/bootstrap/terraform.tfstate.backup
+
+# Terraform provider/module cache
+terraform/bootstrap/.terraform/
+
+## Secret tfvars
+**/*.secret.tfvars

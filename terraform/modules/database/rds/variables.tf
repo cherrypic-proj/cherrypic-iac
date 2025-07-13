@@ -1,8 +1,3 @@
-variable "app_name" {
-  type        = string
-  description = "앱 이름 (ex: cherrypic)"
-}
-
 variable "environment" {
   type        = string
   description = "환경 (예: dev, staging, prod)"
@@ -85,6 +80,12 @@ variable "parameter_group_parameters" {
   }))
   description = "RDS 파라미터 설정 리스트"
   default     = []
+}
+
+variable "db_name" {
+  description = "기본으로 생성할 DB 이름"
+  type        = string
+  default     = "cherrypic"
 }
 
 variable "tags" {

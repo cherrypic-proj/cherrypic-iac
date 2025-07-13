@@ -1,15 +1,10 @@
-variable "app_name" {
-  description = "앱 이름 (ex: cherrypic)"
-  type        = string
-}
-
 variable "environment" {
   description = "환경 이름 (예: dev, prod)"
   type        = string
 }
 
-variable "table_name" {
-  description = "논리적 테이블 이름 (prefix 없이)"
+variable "purpose" {
+  description = "사용 용도 (ex: tfstate)"
   type        = string
 }
 

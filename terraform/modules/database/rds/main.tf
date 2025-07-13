@@ -1,12 +1,12 @@
 resource "aws_db_subnet_group" "main" {
-  name        = "${var.app_name}-${var.engine}-subnet-group"
+  name        = "cherrypic-${var.engine}-subnet-group"
   subnet_ids  = var.subnet_ids
   description = var.subnet_group_description
   tags        = var.tags
 }
 
 resource "aws_db_parameter_group" "main" {
-  name   = "${var.app_name}-${var.engine}-parameter-group"
+  name   = "cherrypic-${var.engine}-parameter-group"
   family = var.parameter_group_family
 
   dynamic "parameter" {
@@ -21,7 +21,7 @@ resource "aws_db_parameter_group" "main" {
 }
 
 resource "aws_db_instance" "main" {
-  identifier              = "${var.app_name}-${var.engine}-${var.environment}"
+  identifier              = "cherrypic-${var.engine}-${var.environment}"
   engine                  = var.engine
   engine_version          = var.engine_version
   instance_class          = var.instance_class
@@ -34,11 +34,12 @@ resource "aws_db_instance" "main" {
   publicly_accessible     = var.publicly_accessible
   backup_retention_period = var.backup_retention_period
   parameter_group_name    = aws_db_parameter_group.main.name
+  db_name                 = var.db_name
 
   tags = merge(
     var.tags,
     {
-      Name = "${var.app_name}-${var.environment}-${var.engine}"
+      Name = "cherrypic-${var.environment}-${var.engine}"
     }
   )
 }
