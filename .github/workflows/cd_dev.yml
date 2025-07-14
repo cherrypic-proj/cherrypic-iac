@@ -1,8 +1,9 @@
 name: Terraform Dev CD
 
 on:
-  pull_request:
-    branches: [ develop ]
+  push:
+    branches:
+      - develop
 
 jobs:
   terraform-apply:
