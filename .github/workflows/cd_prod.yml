@@ -37,7 +37,7 @@ jobs:
           terraform -chdir=terraform/env/prod apply \
             -auto-approve \
             -input=false \
-            -var="aws_access_key=${{ secrets.PROD_AWS_ACCESS_KEY_ID }}" \
-            -var="aws_secret_key=${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}" \
+            -var="access_key_id=${{ secrets.PROD_AWS_ACCESS_KEY_ID }}" \
+            -var="secret_access_key=${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}" \
             -var="username=${{ secrets.PROD_RDS_USERNAME }}" \
             -var="password=${{ secrets.PROD_RDS_PASSWORD }}"
