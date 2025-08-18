@@ -160,44 +160,6 @@ module "cache_dev_sg" {
   tags = local.common_tags
 }
 
-module "jenkins_dev_sg" {
-  source      = "../../modules/network/securitygroup"
-  purpose     = "jenkins"
-  env         = local.env
-  description = "Jenkins Dev Security Group"
-  vpc_id      = module.vpc.id
-
-  ingress_rules = [
-    {
-      from_port   = 22
-      to_port     = 22
-      protocol    = "tcp"
-      use_cidr    = true
-      use_sg      = false
-      cidr_blocks = ["0.0.0.0/0"]
-    },
-    {
-      from_port   = 8080
-      to_port     = 8080
-      protocol    = "tcp"
-      use_cidr    = true
-      use_sg      = false
-      cidr_blocks = ["0.0.0.0/0"]
-    }
-  ]
-
-  egress_rules = [
-    {
-      from_port   = 0
-      to_port     = 0
-      protocol    = "-1"
-      cidr_blocks = ["0.0.0.0/0"]
-    }
-  ]
-
-  tags = local.common_tags
-}
-
 module "db_dev_sg" {
   source      = "../../modules/network/securitygroup"
   purpose     = "db"
@@ -237,13 +199,6 @@ module "db_dev_sg" {
 }
 
 # ============= Elastic Ip ===============
-
-module "eip_jenkins" {
-  source = "../../modules/network/elasticip"
-
-  domain = "vpc"
-  tags   = local.common_tags
-}
 
 module "eip_was" {
   source = "../../modules/network/elasticip"
