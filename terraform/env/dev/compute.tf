@@ -5,7 +5,7 @@ module "bastion_dev" {
   instance_type          = "t2.micro"
   subnet_id              = module.public_subnet_1.id
   vpc_security_group_ids = [module.bastion_dev_sg.id]
-  associate_public_ip    = true
+  associate_public_ip    = false
   key_name               = "cherrypic-bastion-host-key"
 
   root_volume_size = 30
