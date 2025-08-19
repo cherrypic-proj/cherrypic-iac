@@ -19,7 +19,7 @@ module "bastion_dev" {
 module "api_dev" {
   source = "../../modules/compute/ec2"
 
-  ami_id                 = "ami-08943a151bd468f4e" // API Server backup AMI
+  ami_id                 = "ami-0436f6f455f7b550f" // API Server backup AMI
   instance_type          = "t2.micro"
   subnet_id              = module.public_subnet_1.id
   vpc_security_group_ids = [module.api_dev_sg.id]
