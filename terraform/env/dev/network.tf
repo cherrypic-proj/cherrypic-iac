@@ -136,7 +136,7 @@ module "cache_dev_sg" {
       protocol                 = "tcp"
       use_cidr                 = false
       use_sg                   = true
-      source_security_group_id = module.bastion_dev_sg.id
+      source_security_group_id = module.api_dev_sg.id
     },
     {
       from_port                = 6379
@@ -144,8 +144,8 @@ module "cache_dev_sg" {
       protocol                 = "tcp"
       use_cidr                 = false
       use_sg                   = true
-      source_security_group_id = module.was_dev_sg.id
-    }
+      source_security_group_id = module.bastion_dev_sg.id
+    },
   ]
 
   egress_rules = [
@@ -174,7 +174,7 @@ module "db_dev_sg" {
       protocol                 = "tcp"
       use_cidr                 = false
       use_sg                   = true
-      source_security_group_id = module.was_dev_sg.id
+      source_security_group_id = module.api_dev_sg.id
     },
     {
       from_port                = 3306
