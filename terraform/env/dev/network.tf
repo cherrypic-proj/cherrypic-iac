@@ -92,36 +92,6 @@ module "api_dev_sg" {
   tags = local.common_tags
 }
 
-module "bastion_dev_sg" {
-  source      = "../../modules/network/securitygroup"
-  purpose     = "bastion-host"
-  env         = ""
-  description = "Bastion Host Security Group"
-  vpc_id      = module.vpc.id
-
-  ingress_rules = [
-    {
-      from_port   = 22
-      to_port     = 22
-      protocol    = "tcp"
-      use_cidr    = true
-      use_sg      = false
-      cidr_blocks = ["0.0.0.0/0"]
-    }
-  ]
-
-  egress_rules = [
-    {
-      from_port   = 0
-      to_port     = 0
-      protocol    = "-1"
-      cidr_blocks = ["0.0.0.0/0"]
-    }
-  ]
-
-  tags = local.common_tags
-}
-
 module "cache_dev_sg" {
   source      = "../../modules/network/securitygroup"
   purpose     = "cache"
@@ -137,15 +107,7 @@ module "cache_dev_sg" {
       use_cidr                 = false
       use_sg                   = true
       source_security_group_id = module.api_dev_sg.id
-    },
-    {
-      from_port                = 6379
-      to_port                  = 6379
-      protocol                 = "tcp"
-      use_cidr                 = false
-      use_sg                   = true
-      source_security_group_id = module.bastion_dev_sg.id
-    },
+    }
   ]
 
   egress_rules = [
@@ -175,14 +137,6 @@ module "db_dev_sg" {
       use_cidr                 = false
       use_sg                   = true
       source_security_group_id = module.api_dev_sg.id
-    },
-    {
-      from_port                = 3306
-      to_port                  = 3306
-      protocol                 = "tcp"
-      use_cidr                 = false
-      use_sg                   = true
-      source_security_group_id = module.bastion_dev_sg.id
     }
   ]
 
