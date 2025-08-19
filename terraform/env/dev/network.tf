@@ -36,11 +36,11 @@ module "private_route_table" {
 
 # ============= Security Group ===============
 
-module "was_dev_sg" {
+module "api_dev_sg" {
   source      = "../../modules/network/securitygroup"
-  purpose     = "was"
+  purpose     = "api"
   env         = local.env
-  description = "WAS Security Group"
+  description = "API Server Security Group"
   vpc_id      = module.vpc.id
 
   ingress_rules = [
